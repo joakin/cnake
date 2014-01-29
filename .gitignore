@@ -9,5 +9,4 @@ pom.xml
 .lein-plugins/
 .nrepl-port
 cnake.js
-cnake-prod.js
 .DS_Store
