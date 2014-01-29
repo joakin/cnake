@@ -8,5 +8,3 @@ pom.xml
 .lein-repl-history
 .lein-plugins/
 .nrepl-port
-cnake.js
-cnake-prod.js
