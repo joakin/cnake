@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>cnake</title>
+        <link href='./style.css' rel='stylesheet' />
+        <script type='text/javascript' id='lt_ws' src='http://localhost:49850/socket.io/lighttable/ws.js'></script>
+    </head>
+    <body>
+        <div id='game'>
+            <canvas id='cnake'></canvas>
+            <div id='instructions'>
+                <h3>Welcome to CNAKE</h3>
+                <p>A snake game written in clojurescript and canvas.</p>
+                <ul>
+                    <li>Arrow keys to move the snake</li>
+                    <li>Step into a pill to eat it</li>
+                    <li>Press Space to activate the turbo, release it for slowing down</li>
+                    <li>Press Enter to restart the game</li>
+                </ul>
+                <p>Check the source at the <a href='http://github.com/joakin/cnake'>github repository</a>
+            </div>
+        </div>
+        <script src="out/goog/base.js" type="text/javascript"></script>
+        <script src="cnake.js" type="text/javascript"></script>
+        <script type="text/javascript">goog.require("cnake.core");</script>
+    </body>
+</html>
