@@ -25,3 +25,9 @@ src='http://localhost:49850/socket.io/lighttable/ws.js'></script>
 To compile for publishing on the web do `lein cljsbuild once cnake-prod`. This will take about 20 seconds, and will compile with the advanced optimizations file.
 
 To check the page and game open index.html
+
+## TODO
+
+* Add sounds for the events (move, eat and game-over)
+* Add swipe recognition for mobile devices
+* Fix meta viewport on mobile devices
