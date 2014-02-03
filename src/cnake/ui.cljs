@@ -9,24 +9,28 @@
             [clojure.set :refer [union]]
             [clojure.string :as string]))
 
-;; UI state
-(def world (atom nil))
+(def world "UI state" (atom nil))
 
 ;; -------------------------------------------------------------------------------
 ;; Canvas UI
 
-;; Canvas dom element on the page
-(def cvs (dom/by-id "cnake"))
+(def cvs
+  "Canvas dom element on the page"
+  (dom/by-id "cnake"))
 
-;; Canvas 2d context for drawing
-(def ctx (canvas/context cvs))
+(def ctx
+  "Canvas 2d context for drawing"
+  (canvas/context cvs))
 
-;; Size of each square in the board
-(def square-size 10)
+(def square-size
+  "Size of each square in the board"
+  10)
+
 (def half-square (/ square-size 2))
 (def pill-radius 4)
 
-;; Height and width of the canvas in pixels depending of the square-size
+;; Height and width of the canvas in pixels depending of the square-size and
+;; the game's board size
 (def width (* game/width square-size))
 (def height (* game/height square-size))
 
@@ -60,11 +64,10 @@
         n (quot (count lines) 2)]
     (doseq [[line y] (map vector lines (range (- n) (+ n 1)))]
       (canvas/fill-text! ctx line (quot width 2) (+ (quot height 2) (* 18 y))))))
-(range -1.5 1.5)
-(draw-text! ctx "hola\ncu\nlo")
 
-;; Snake body color [hue saturation lightness]
-(def snake-color [0 100 40])
+(def snake-color
+  "Snake body color [hue saturation lightness]"
+  [0 100 40])
 
 (defn draw-snake
   "Draw a snake on the board."
@@ -75,7 +78,9 @@
     (canvas/stroke-rect! ctx x y square-size square-size)
     ))
 
-(def pill-color [140 50 40])
+(def pill-color
+  "Pill color [hue saturation lightness]"
+  [140 50 40])
 
 (defn draw-pills
   "Draw the pills on the board"
@@ -135,15 +140,15 @@
 ;; -------------------------------------------------------------------------------
 ;; Key events handling
 
-;; Keycodes that interest us. Taken from
-;; http://docs.closure-library.googlecode.com/git/closure_goog_events_keynames.js.source.html#line33
-;; Which apparently is not in the closure version that clojurescript uses
-(def keycodes {37 :left
-               38 :up
-               39 :right
-               40 :down
-               32 :space
-               13 :enter})
+(def keycodes
+  "Keycodes that interest us. Taken from
+  http://docs.closure-library.googlecode.com/git/closure_goog_events_keynames.js.source.html#line33"
+  {37 :left
+   38 :up
+   39 :right
+   40 :down
+   32 :space
+   13 :enter})
 
 (defn event->key
   "Transform an js event object into the key name"
@@ -167,21 +172,22 @@
   (let [evs (event-chan event-type event->key)]
     (filter< allowed-keys evs)))
 
-;; Keys that trigger boost
-(def boost-keys #{:space})
-;; Keys that trigger movement
-(def move-keys #{:left :up :right :down})
-;; Reset key
-(def reset-key #{:enter})
+(def boost-keys "Keys that trigger boost" #{:space})
+(def move-keys "Keys that trigger movement" #{:left :up :right :down})
+(def reset-key "Reset key" #{:enter})
 
-;; Keys we want to listen on key up
-(def valid-keys-up boost-keys)
+(def valid-keys-up
+  "Keys we want to listen on key up"
+  boost-keys)
+
 (defn keys-up-chan
   "Create a channel of keys up restricted by the valid keys"
   [] (keys-chan (.-KEYUP events/EventType) valid-keys-up))
 
-;; Keys we want to listen on key down
-(def valid-keys-down (union move-keys boost-keys reset-key))
+(def valid-keys-down
+  "Keys we want to listen on key down"
+  (union move-keys boost-keys reset-key))
+
 (defn keys-down-chan
   "Create a channel of keys pressed down restricted by the valid keys"
   [] (keys-chan (.-KEYDOWN events/EventType) valid-keys-down))
@@ -199,8 +205,6 @@
   [k]
   (cond
    (boost-keys k) [:turbo false]))
-
-(declare init)
 
 (defn init-events!
   "Initialize event processing. It takes all the key presses and transforms

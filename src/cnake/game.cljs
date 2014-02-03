@@ -5,16 +5,13 @@
 ;; --------------------------------------------------------------------------------
 ;; Game info
 
-(def width 20)
-(def height 16)
+(def width "Board width" 20)
+(def height "Board height" 16)
 
-;; Game logic tick speed
-(def game-speed 300)
-;; Game speed turbo multiplier
-(def game-turbo 4)
+(def game-speed "Game logic tick speed" 300)
+(def game-turbo "Game speed turbo multiplier" 4)
 
-;; Minimum number of pills on the board
-(def min-pills 3)
+(def min-pills "Minimum number of pills on the board" 3)
 
 (def initial-body-length 3)
 (def initial-body-x-pos (quot width 3))
@@ -24,7 +21,6 @@
                             (map + (range initial-body-length) (repeat initial-body-x-pos))
                             (repeat initial-body-y-pos))))
 
-;; Initial snake state
 (def initial-snake {:body initial-body
                     :vel [1 0]})
 
@@ -32,10 +28,6 @@
                     :pills []
                     :speed game-speed
                     :status nil})
-
-;; --------------------------------------------------------------------------------
-;; Collisions
-
 
 ;; --------------------------------------------------------------------------------
 ;; Snake logic
@@ -201,3 +193,4 @@
   (let [notifos (chan)]
     (game! initial-world commands notifos)
     notifos))
+

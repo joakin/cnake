@@ -3,4 +3,6 @@
 
 (enable-console-print!)
 
+;; The ui is the starting point. It will render itself and initialize
+;; the game.
 (ui/init)
