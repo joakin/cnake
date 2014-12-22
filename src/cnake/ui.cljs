@@ -49,7 +49,7 @@
 (defn draw-timestamp!
   "Draw a timestamp in the bottom right of the canvas"
   [ctx]
-  (canvas/font! ctx "monospace" 12 "normal")
+  (canvas/font! ctx "monospace" "normal" 12)
   (canvas/text-align! ctx "right")
   (canvas/fill-style! ctx [0 100 40])
   (canvas/fill-text! ctx (.toLocaleString (js/Date.)) (- width 10) (- height 10)))
@@ -57,7 +57,7 @@
 (defn draw-text!
   "Draw a text in the screen of the canvas"
   [ctx text]
-  (canvas/font! ctx "monospace" 16 "bold")
+  (canvas/font! ctx "monospace" "bold" 16)
   (canvas/text-align! ctx "center")
   (canvas/fill-style! ctx [0 0 0])
   (let [lines (.split text "\n")
