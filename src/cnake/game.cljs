@@ -8,7 +8,7 @@
 (def width "Board width" 20)
 (def height "Board height" 16)
 
-(def game-speed "Game logic tick speed" 300)
+(def game-speed "Game logic tick speed" 200)
 (def game-turbo "Game speed turbo multiplier" 4)
 
 (def min-pills "Minimum number of pills on the board" 3)
