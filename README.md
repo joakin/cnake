@@ -31,3 +31,4 @@ To check the page and game open index.html
 * Add sounds for the events (move, eat and game-over)
 * Fix meta viewport on mobile devices
 * Turbo and game restart on mobile?
+* Make speed increase with snake size
