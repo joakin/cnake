@@ -209,6 +209,32 @@
   (cond
    (boost-keys k) [:turbo false]))
 
+(defn touch-event->coords [e]
+  (let [touch (aget (.. e -event_ -touches) 0)]
+    {:x (.-pageX touch) :y (.-pageY touch)}))
+
+(defn touch-move-chan []
+  (event-chan (.-TOUCHMOVE events/EventType) touch-event->coords))
+
+(defn touch-commands []
+  (let [moves (touch-move-chan)
+        cmds (chan)]
+    (go-loop [previous {:x 0 :y 0}
+              coords (<! moves)]
+      (let [diff {:x (- (:x coords) (:x previous)) :y (- (:y coords) (:y previous))}]
+        (if (> (js/Math.abs (:x diff)) (js/Math.abs (:y diff)))
+          (if (> 0 (:x diff))
+            (>! cmds (key-down->command :left))
+            (>! cmds (key-down->command :right))
+            )
+          (if (> 0 (:y diff))
+            (>! cmds (key-down->command :up))
+            (>! cmds (key-down->command :down))
+            )))
+        (recur coords (<! moves)))
+    cmds))
+
+
 (defn init-events!
   "Initialize event processing. It takes all the key presses and transforms
   them into commands and passes them to the game commands channel"
@@ -216,7 +242,8 @@
   (let [keys-pressed (keys-down-chan)
         keys-up (keys-up-chan)
         commands (unique (merge [(map< key-down->command keys-pressed)
-                                 (map< key-up->command keys-up)]))]
+                                 (map< key-up->command keys-up)
+                                 (touch-commands)]))]
     (pipe commands game-commands)))
 
 ;; -------------------------------------------------------------------------------
