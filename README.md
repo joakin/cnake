@@ -29,5 +29,5 @@ To check the page and game open index.html
 ## TODO
 
 * Add sounds for the events (move, eat and game-over)
-* Add swipe recognition for mobile devices
 * Fix meta viewport on mobile devices
+* Turbo and game restart on mobile?
