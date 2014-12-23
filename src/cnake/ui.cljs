@@ -160,12 +160,16 @@
 (defn event-chan
   "Creates a channel with the events of type event-type and optionally applies
   the function parse-event to each event."
-  ([event-type] (event-chan event-type identity))
+  ([event-type] (event-chan event-type identity false))
   ([event-type parse-event]
+   (event-chan event-type parse-event false))
+  ([event-type parse-event prevent-default]
    (let [ev-chan (chan)]
      (events/listen (.-body js/document)
                     event-type
-                    #(put! ev-chan (parse-event %)))
+                    #(do
+                       (if prevent-default (.preventDefault %))
+                       (put! ev-chan (parse-event %))))
      ev-chan)))
 
 (defn keys-chan
@@ -214,7 +218,7 @@
     {:x (.-pageX touch) :y (.-pageY touch)}))
 
 (defn touch-move-chan []
-  (event-chan (.-TOUCHMOVE events/EventType) touch-event->coords))
+  (event-chan (.-TOUCHMOVE events/EventType) touch-event->coords true))
 
 (defn touch-commands []
   (let [moves (touch-move-chan)

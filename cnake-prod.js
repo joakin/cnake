@@ -8491,7 +8491,7 @@ var Ph = function() {
   c.b = a;
   return c;
 }();
-var Wh = Zc(20, 3), Xh = Zc(16, 2), Yh = oe(Rd.c(pe, Rd.c(Uc, nf.a(3), Td.a(Wh)), Td.a(Xh))), Zh = new t(null, 4, [Ef, new t(null, 2, [fg, Yh, eg, new Y(null, 2, 5, Z, [1, 0], null)], null), gg, wc, Gf, 300, Wf, null], null);
+var Wh = Zc(20, 3), Xh = Zc(16, 2), Yh = oe(Rd.c(pe, Rd.c(Uc, nf.a(3), Td.a(Wh)), Td.a(Xh))), Zh = new t(null, 4, [Ef, new t(null, 2, [fg, Yh, eg, new Y(null, 2, 5, Z, [1, 0], null)], null), gg, wc, Gf, 200, Wf, null], null);
 function $h(a, b) {
   var c = function() {
     switch(b instanceof X ? b.aa : null) {
@@ -8939,30 +8939,37 @@ function Li(a) {
   return U.c(Ki, a.keyCode, Rf);
 }
 var Mi = function() {
-  function a(a, b) {
-    var c = Gh.i(), g = document.body;
-    oi(g, a, function(a, c, d) {
+  function a(a, b, c) {
+    var d = Gh.i(), l = document.body;
+    oi(l, a, function(a, d, e) {
       return function(a) {
-        return Ih.b(d, b.a ? b.a(a) : b.call(null, a));
+        u(c) && a.preventDefault();
+        return Ih.b(e, b.a ? b.a(a) : b.call(null, a));
       };
-    }(g, a, c));
-    return c;
+    }(l, a, d));
+    return d;
   }
-  function b(a) {
-    return c.b(a, Sc);
+  function b(a, b) {
+    return d.c(a, b, !1);
   }
-  var c = null, c = function(c, e) {
+  function c(a) {
+    return d.c(a, Sc, !1);
+  }
+  var d = null, d = function(d, f, g) {
     switch(arguments.length) {
       case 1:
-        return b.call(this, c);
+        return c.call(this, d);
       case 2:
-        return a.call(this, c, e);
+        return b.call(this, d, f);
+      case 3:
+        return a.call(this, d, f, g);
     }
     throw Error("Invalid arity: " + arguments.length);
   };
-  c.a = b;
-  c.b = a;
-  return c;
+  d.a = c;
+  d.b = b;
+  d.c = a;
+  return d;
 }();
 function Ni(a, b) {
   var c = Mi.b(a, Li);
@@ -9054,7 +9061,7 @@ function Ti(a) {
               return d = c[7], d = W.b(Ld, d), c[2] = d, c[1] = 9, $;
             }
             if (20 === d) {
-              var e = c[8], f = c[9], d = c[10];
+              var e = c[8], e = c[9], d = c[10];
               var d = e, d = Oc(d) ? W.b(Ld, d) : d, e = U.b(d, gg), f = U.b(d, Ef), n, p = eg.a(f);
               n = Af.a(f);
               p = dc.b(new Y(null, 2, 5, Z, [0, 0], null), Rd.c(Uc, n, p));
@@ -9094,25 +9101,25 @@ function Ti(a) {
               }
               e = Wf.a(d);
               f = dc.b(e, dg);
-              c[9] = e;
+              c[8] = e;
               c[10] = d;
               c[1] = f ? 21 : 22;
               return $;
             }
             if (27 === d) {
-              return e = c[8], f = c[11], d = c[12], d = $h(f, d), d = Ac.c(e, Ef, d), c[7] = d, c[2] = null, c[1] = 5, $;
+              return f = c[11], d = c[12], e = c[9], d = $h(f, d), d = Ac.c(e, Ef, d), c[7] = d, c[2] = null, c[1] = 5, $;
             }
             if (1 === d) {
               return d = Oc(Zh), c[1] = d ? 2 : 3, $;
             }
             if (24 === d) {
-              return d = c[10], e = c[2], c[13] = e, c[7] = d, c[2] = null, c[1] = 5, $;
+              return d = c[10], e = c[2], c[7] = d, c[13] = e, c[2] = null, c[1] = 5, $;
             }
             if (4 === d) {
-              return d = c[2], e = U.b(d, Gf), f = U.b(d, gg), n = U.b(d, Ef), p = U.b(d, Wf), d = Zh, c[14] = p, c[15] = e, c[16] = n, c[7] = d, c[17] = f, c[2] = null, c[1] = 5, $;
+              return d = c[2], e = U.b(d, Gf), f = U.b(d, gg), n = U.b(d, Ef), p = U.b(d, Wf), d = Zh, c[14] = n, c[7] = d, c[15] = p, c[16] = e, c[17] = f, c[2] = null, c[1] = 5, $;
             }
             if (15 === d) {
-              return e = c[8], d = ci.b(0, a), c[18] = d, c[7] = e, c[2] = null, c[1] = 5, $;
+              return e = c[9], d = ci.b(0, a), c[7] = e, c[18] = d, c[2] = null, c[1] = 5, $;
             }
             if (21 === d) {
               return d = new Y(null, 1, 5, Z, [dg], null), Ng(c, 24, b, d);
@@ -9121,7 +9128,7 @@ function Ti(a) {
               return d = c[2], c[2] = d, c[1] = 6, $;
             }
             if (22 === d) {
-              return d = c[19], f = c[9], d = ci.b(d, a), e = new Y(null, 1, 5, Z, [f], null), c[20] = d, Ng(c, 25, b, e);
+              return e = c[8], d = c[19], d = ci.b(d, a), e = new Y(null, 1, 5, Z, [e], null), c[20] = d, Ng(c, 25, b, e);
             }
             if (29 === d) {
               throw d = c[21], c = [y("Unrecognized game command: "), y(d)].join(""), Error(c);
@@ -9130,7 +9137,7 @@ function Ti(a) {
               return d = c[2], Og(c, d);
             }
             if (28 === d) {
-              return e = c[8], d = c[12], f = Gf.a(e), d = Ac.c(e, Gf, u(d) ? f / 4 : 4 * f), c[7] = d, c[2] = null, c[1] = 5, $;
+              return d = c[12], e = c[9], f = Gf.a(e), d = Ac.c(e, Gf, u(d) ? f / 4 : 4 * f), c[7] = d, c[2] = null, c[1] = 5, $;
             }
             if (25 === d) {
               return d = c[10], d = new Y(null, 2, 5, Z, [Tf, d], null), c[22] = c[2], Ng(c, 26, b, d);
@@ -9164,8 +9171,8 @@ function Ti(a) {
               }
               return $;
             }
-            return 2 === d ? (d = W.b(Ld, Zh), c[2] = d, c[1] = 4, $) : 23 === d ? (d = c[2], c[2] = d, c[1] = 14, $) : 19 === d ? (e = c[2], d = Zh, c[23] = e, c[7] = d, c[2] = null, c[1] = 5, $) : 11 === d ? (e = c[8], c[7] = e, c[2] = null, c[1] = 5, $) : 9 === d ? (n = c[2], d = U.b(n, Gf), p = U.b(n, gg), f = U.b(n, Ef), e = U.b(n, Wf), c[8] = n, c[24] = p, c[19] = d, c[25] = e, c[11] = f, Mg(c, 10, a)) : 5 === d ? (d = c[7], d = Oc(d), c[1] = d ? 7 : 8, $) : 14 === d ? (d = c[2], c[2] = d, 
-            c[1] = 13, $) : 26 === d ? (d = c[10], e = c[2], c[26] = e, c[7] = d, c[2] = null, c[1] = 5, $) : 16 === d ? (e = c[25], d = dc.b(e, dg), c[1] = d ? 17 : 18, $) : 10 === d ? (e = c[25], d = c[2], f = T.c(d, 0, null), d = T.c(d, 1, null), e = dc.b(e, dg), n = Dd.b(f, Ff), c[21] = f, c[12] = d, c[1] = u(e && n) ? 11 : 12, $) : 18 === d ? (c[2] = null, c[1] = 19, $) : 8 === d ? (d = c[7], c[2] = d, c[1] = 9, $) : null;
+            return 2 === d ? (d = W.b(Ld, Zh), c[2] = d, c[1] = 4, $) : 23 === d ? (d = c[2], c[2] = d, c[1] = 14, $) : 19 === d ? (e = c[2], d = Zh, c[7] = d, c[23] = e, c[2] = null, c[1] = 5, $) : 11 === d ? (e = c[9], c[7] = e, c[2] = null, c[1] = 5, $) : 9 === d ? (n = c[2], d = U.b(n, Gf), p = U.b(n, gg), f = U.b(n, Ef), e = U.b(n, Wf), c[11] = f, c[24] = e, c[9] = n, c[25] = p, c[19] = d, Mg(c, 10, a)) : 5 === d ? (d = c[7], d = Oc(d), c[1] = d ? 7 : 8, $) : 14 === d ? (d = c[2], c[2] = d, 
+            c[1] = 13, $) : 26 === d ? (d = c[10], e = c[2], c[26] = e, c[7] = d, c[2] = null, c[1] = 5, $) : 16 === d ? (e = c[24], d = dc.b(e, dg), c[1] = d ? 17 : 18, $) : 10 === d ? (e = c[24], d = c[2], f = T.c(d, 0, null), d = T.c(d, 1, null), e = dc.b(e, dg), n = Dd.b(f, Ff), c[12] = d, c[21] = f, c[1] = u(e && n) ? 11 : 12, $) : 18 === d ? (c[2] = null, c[1] = 19, $) : 8 === d ? (d = c[7], c[2] = d, c[1] = 9, $) : null;
           };
         }(c), c);
       }(), f = function() {
@@ -9180,7 +9187,7 @@ function Ti(a) {
 var Wi = Ni("keydown", Ri), Xi = Ni("keyup", Oi), Yi = Vh.a(Rh.a(new Y(null, 3, 5, Z, [Th(Si, Wi), Th(function(a) {
   return u(Oi.a ? Oi.a(a) : Oi.call(null, a)) ? new Y(null, 2, 5, Z, [Cf, !1], null) : null;
 }, Xi), function() {
-  var a = Mi.b("touchmove", Ti), b = Gh.i(), c = Gh.a(1);
+  var a = Mi.c("touchmove", Ti, !0), b = Gh.i(), c = Gh.a(1);
   eh(function(a, b, c) {
     return function() {
       var g = function() {
@@ -9384,8 +9391,8 @@ Ei.height = 160;
               c = b[10];
               c = T.c(d, 0, null);
               d = T.c(d, 1, null);
-              b[8] = d;
               b[10] = c;
+              b[8] = d;
               switch(c instanceof X ? c.aa : null) {
                 case "eat":
                   b[1] = 9;
@@ -9404,7 +9411,7 @@ Ei.height = 160;
               }
               return $;
             }
-            return 2 === c ? (c = b[2], d = T.c(c, 0, null), e = T.c(c, 1, null), b[11] = d, b[9] = c, b[12] = e, b[2] = null, b[1] = 3, $) : 11 === c ? (d = b[2], b[9] = d, b[2] = null, b[1] = 3, $) : 9 === c ? (b[2] = null, b[1] = 5, $) : 5 === c ? (b[13] = b[2], Mg(b, 11, a)) : 10 === c ? (c = b[10], c = [y("Unrecognized UI command: "), y(c)].join(""), c = wf.e(N([Error(c)], 0)), b[2] = c, b[1] = 5, $) : 8 === c ? (b[2] = null, b[1] = 5, $) : null;
+            return 2 === c ? (c = b[2], d = T.c(c, 0, null), e = T.c(c, 1, null), b[11] = d, b[12] = e, b[9] = c, b[2] = null, b[1] = 3, $) : 11 === c ? (d = b[2], b[9] = d, b[2] = null, b[1] = 3, $) : 9 === c ? (b[2] = null, b[1] = 5, $) : 5 === c ? (b[13] = b[2], Mg(b, 11, a)) : 10 === c ? (c = b[10], c = [y("Unrecognized UI command: "), y(c)].join(""), c = wf.e(N([Error(c)], 0)), b[2] = c, b[1] = 5, $) : 8 === c ? (b[2] = null, b[1] = 5, $) : null;
           };
         }(b), b);
       }(), e = function() {
