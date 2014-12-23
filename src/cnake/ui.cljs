@@ -126,10 +126,13 @@
   actual loop that renders"
   [notifos]
   (go-loop [[cmd v] (<! notifos)]
-;;       (println cmd v)
+      ; (println cmd v)
       (case cmd
         :world (reset! world (game-world->ui-world v))
         :game-over (do (reset! world nil) (draw-game-over! ctx))
+        ; Commands that we don't react to yet:
+        :move nil
+        :eat nil
         (println (js/Error. (str "Unrecognized UI command: " cmd))))
     (recur (<! notifos)))
 
