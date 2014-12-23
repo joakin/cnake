@@ -49,7 +49,7 @@
 (defn draw-timestamp!
   "Draw a timestamp in the bottom right of the canvas"
   [ctx]
-  (canvas/font! ctx "monospace" "normal" 12)
+  (canvas/font! ctx "monospace" "normal" 8)
   (canvas/text-align! ctx "right")
   (canvas/fill-style! ctx [0 100 40])
   (canvas/fill-text! ctx (.toLocaleString (js/Date.)) (- width 10) (- height 10)))
@@ -91,7 +91,7 @@
     (canvas/stroke-circle! ctx x y pill-radius)))
 
 (defn draw-game-over! [ctx]
-  (draw-text! ctx "GAME OVER\nPress Enter to restart"))
+  (draw-text! ctx "GAME OVER\nPress Enter\nto restart"))
 
 ;; -------------------------------------------------------------------------------
 ;; UI data fns
