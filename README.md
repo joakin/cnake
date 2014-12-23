@@ -32,3 +32,4 @@ To check the page and game open index.html
 * Fix meta viewport on mobile devices
 * Turbo and game restart on mobile?
 * Make speed increase with snake size
+* Make game restart when receiving any command
