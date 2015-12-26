@@ -161,7 +161,7 @@
   [initial-world cmds notify]
   (go-loop [{:keys [status snake pills speed] :as world} initial-world]
     (let [[cmd v] (<! cmds)]
-;;       (println "Received: " cmd)
+      ; (println "Received: " cmd)
       (if (and (= status :game-over) (not= cmd :reset))
         (recur world)
         (case cmd

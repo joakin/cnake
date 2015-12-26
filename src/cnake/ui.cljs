@@ -91,7 +91,7 @@
     (canvas/stroke-circle! ctx x y pill-radius)))
 
 (defn draw-game-over! [ctx]
-  (draw-text! ctx "GAME OVER\nPress Enter\nto restart"))
+  (draw-text! ctx "GAME OVER\nPress game keys\nor swipe\nto restart"))
 
 ;; -------------------------------------------------------------------------------
 ;; UI data fns
