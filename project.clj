@@ -2,11 +2,11 @@
   :description "Browser snake game"
   :url "http://example.com/FIXME"
 
-  :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2505"]
-                 [org.clojure/core.async "0.1.346.0-17112a-alpha"]]
+  :dependencies [[org.clojure/clojure "1.7.0"]
+                 [org.clojure/clojurescript "1.7.189"]
+                 [org.clojure/core.async "0.2.374"]]
 
-  :plugins [[lein-cljsbuild "1.0.3"]]
+  :plugins [[lein-cljsbuild "1.1.2"]]
 
   :source-paths ["src"]
 
